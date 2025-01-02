@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-34f3-1dj2tmu178^kn6@lg4(@)q-30@b2sw-rzoa=g1s+$mk4f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'meetups'
 ]
 
 MIDDLEWARE = [
