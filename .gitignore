@@ -1,3 +1,5 @@
+uploads/images/
+
 # Django-specific files
 *.log
 *.pot
