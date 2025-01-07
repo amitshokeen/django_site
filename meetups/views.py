@@ -19,7 +19,11 @@ def meetup_details(request, meetup_slug):
             if registration_form.is_valid():
                 user_email = registration_form.cleaned_data['email']
                 participant, _ = Participant.objects.get_or_create(email=user_email)
-                selected_meetup.participants.add(participant)
+
+                # Check if the participant is already registered for this meetup
+                if participant not in selected_meetup.participants.all():
+                    selected_meetup.participants.add(participant)  # Add participant only if not already added
+
                 return redirect('confirm-registration', meetup_slug=meetup_slug)
                 
         return render(request, 'meetups/meetup-details.html', {
@@ -31,6 +35,7 @@ def meetup_details(request, meetup_slug):
         return render(request, 'meetups/meetup-details.html', {
             'meetup_found': False
         })
+
 
 def confirm_registration(request, meetup_slug):
     meetup = Meetup.objects.get(slug=meetup_slug)
